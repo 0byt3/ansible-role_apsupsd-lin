@@ -1,0 +1,23 @@
+- name: "(firewalld) Create firewalld service files"
+  ansible.builtin.copy:
+    dest: "/etc/firewalld/services/{{ item | basename | replace('firewalld_', '') }}"
+    src: "{{ item }}"
+    mode: 0644
+  loop:
+    - "firewalld_apcupsd-nis.xml"
+    - "firewalld_apcupsd-pcnet.xml"
+  notify: ["reload firewalld"]
+
+# reload firewalld if it is running so new service files can be used
+- ansible.builtin.meta: "flush_handlers"
+
+- name: "(firewalld) Allow APCUPSd services"
+  ansible.posix.firewalld:
+    permanent: true
+    offline: true
+    service: "{{ item }}"
+    state: "enabled"
+  loop:
+    - "apcupsd-nis"
+    - "apcupsd-pcnet"
+  notify: ["reload firewalld"]

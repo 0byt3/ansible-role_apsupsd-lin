@@ -1,0 +1,22 @@
+---
+# handlers file for apcupsd
+- name: "restart apcupsd"
+  ansible.builtin.service:
+    name: "apcupsd"
+    state: "restarted"
+
+- name: "(ufw firewall) update ufw apps"
+  ansible.builtin.shell:
+    cmd: "ufw app update {{ item }}"
+  loop:
+    - "apcupsd-nis"
+    - "apcupsd-pcnet"
+
+## only want to reload firewalld if it is actually running
+- name: "reload firewalld"
+  ansible.builtin.shell:
+    cmd: |
+      if [ `firewall-cmd --state` == "running" ]; then
+        firewall-cmd --reload || exit $?;
+      fi
+  

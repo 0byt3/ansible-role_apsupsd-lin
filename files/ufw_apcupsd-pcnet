@@ -1,0 +1,4 @@
+[apcupsd-pcnet]
+title=APCUPSd PCNet
+description=APCUPSd using APCs PCNet protocol
+ports=3052

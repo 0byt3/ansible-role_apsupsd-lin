@@ -1,0 +1,4 @@
+[apcupsd-nis]
+title=APCUPSd NIS
+description=APCUPSd Network Information Server
+ports=3551

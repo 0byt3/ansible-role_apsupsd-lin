@@ -1,0 +1,163 @@
+---
+# vars file for apcupsd
+
+apc_cfg_remote_path: "/etc/apcupsd/apcupsd.conf"
+
+apc_options: [
+  {
+    name: "UPSNAME",
+    value: "{{ apc_upsname|default(None) }}",
+  },
+  {
+    name: "UPSCABLE",
+    value: "{{ apc_upscable|default(None) }}",
+  },
+  {
+    name: "UPSTYPE",
+    value: "{{ apc_upstype|default(None) }}",
+  },
+  {
+    name: "DEVICE",
+    value: "{{ apc_device|default(None) }}",
+  },
+  {
+    name: "POLLTIME",
+    value: "{{ apc_polltime|default(None) }}",
+  },
+  {
+    name: "SCRIPTDIR",
+    value: "{{ apc_scriptdir|default(None) }}",
+  },
+  {
+    name: "PWRFAILDIR",
+    value: "{{ apc_pwrfaildir|default(None) }}",
+  },
+  {
+    name: "NOLOGINDIR",
+    value: "{{ apc_nologindir|default(None) }}",
+  },
+  {
+    name: "ONBATTERYDELAY",
+    value: "{{ apc_onbatterydelay|default(None) }}",
+  },
+  {
+    name: "BATTERYLEVEL",
+    value: "{{ apc_batterylevel|default(None) }}",
+  },
+  {
+    name: "MINUTES",
+    value: "{{ apc_minutes|default(None) }}",
+  },
+  {
+    name: "TIMEOUT",
+    value: "{{ apc_timeout|default(None) }}",
+  },
+  {
+    name: "ANNOY",
+    value: "{{ apc_annoy|default(None) }}",
+  },
+  {
+    name: "ANNOYDELAY",
+    value: "{{ apc_annoydelay|default(None) }}",
+  },
+  {
+    name: "NOLOGON",
+    value: "{{ apc_nologon|default(None) }}",
+  },
+  {
+    name: "KILLDELAY",
+    value: "{{ apc_killdelay|default(None) }}",
+  },
+  {
+    name: "NETSERVER",
+    value: "{{ apc_netserver|default(None) }}",
+  },
+  {
+    name: "NISIP",
+    value: "{{ apc_nisip|default(None) }}",
+  },
+  {
+    name: "NISPORT",
+    value: "{{ apc_nisport|default(None) }}",
+  },
+  {
+    name: "EVENTSFILE",
+    value: "{{ apc_eventsfile|default(None) }}",
+  },
+  {
+    name: "EVENTSFILEMAX",
+    value: "{{ apc_eventsfilemax|default(None) }}",
+  },
+  {
+    name: "UPSCLASS",
+    value: "{{ apc_upsclass|default(None) }}",
+  },
+  {
+    name: "UPSMODE",
+    value: "{{ apc_upsmode|default(None) }}",
+  },
+  {
+    name: "STATTIME",
+    value: "{{ apc_stattime|default(None) }}",
+  },
+  {
+    name: "STATFILE",
+    value: "{{ apc_statfile|default(None) }}",
+  },
+  {
+    name: "LOGSTATS",
+    value: "{{ apc_logstats|default(None) }}",
+  },
+  {
+    name: "DATATIME",
+    value: "{{ apc_datatime|default(None) }}",
+  },
+  {
+    name: "FACILITY",
+    value: "{{ apc_facility|default(None) }}",
+  },
+  {
+    name: "BATTDATE",
+    value: "{{ apc_battdate|default(None) }}",
+  },
+  {
+    name: "SENSITIVITY",
+    value: "{{ apc_sensitivity|default(None) }}",
+  },
+  {
+    name: "WAKEUP",
+    value: "{{ apc_wakeup|default(None) }}",
+  },
+  {
+    name: "SLEEP",
+    value: "{{ apc_sleep|default(None) }}",
+  },
+  {
+    name: "LOTRANSFER",
+    value: "{{ apc_lotransfer|default(None) }}",
+  },
+  {
+    name: "HITRANSFER",
+    value: "{{ apc_hitransfer|default(None) }}",
+  },
+  {
+    name: "RETURNCHARGE",
+    value: "{{ apc_returncharge|default(None) }}",
+  },
+  {
+    name: "BEEPSTATE",
+    value: "{{ apc_beepstate|default(None) }}",
+  },
+  {
+    name: "LOWBATT",
+    value: "{{ apc_lowbatt|default(None) }}",
+  },
+  {
+    name: "OUTPUTVOLTS",
+    value: "{{ apc_outputvolts|default(None) }}",
+  },
+  {
+    name: "SELFTEST",
+    value: "{{ apc_selftest|default(None) }}",
+  }
+]

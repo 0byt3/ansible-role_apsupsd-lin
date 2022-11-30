@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>apcupsd-nis</short>
+  <description>APCUPSd Net Info Server</description>
+  <port port="3551" protocol="tcp"/>
+  <port port="3551" protocol="udp"/>
+</service>

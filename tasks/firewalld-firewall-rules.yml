@@ -1,0 +1,19 @@
+- name: "(ufw firewall)  Copy UFW app files"
+  ansible.builtin.copy:
+    dest: "/etc/ufw/applications.d/{{ item | basename | replace('ufw_', '') }}"
+    src: "{{ item }}"
+    mode: 0644
+  loop:
+    - "ufw_apcupsd-net-info-server"
+    - "ufw_apcupsd-pcnet"
+  notify: ["update ufw apps"]
+
+- ansible.builtin.meta: "flush_handlers"
+
+- name: "(ufw firewall) Allow APCUPSd services"
+  community.general.ufw:
+    name: "{{ item }}"
+    rule: "allow"
+  loop:
+    - "apcupsd-nis"
+    - "apcupsd-pcnet"

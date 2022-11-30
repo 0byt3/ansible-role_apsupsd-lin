@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>apcupsd-pcnet</short>
+  <description>APCUPSd PCNet</description>
+  <port port="3052" protocol="tcp"/>
+  <port port="3052" protocol="udp"/>
+</service>

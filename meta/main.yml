@@ -1,0 +1,9 @@
+galaxy_info:
+  author: Eric R
+  description: Configure apcupsd service for Windows
+  company: Coast Mountains School District 82
+  license: MIT
+  min_ansible_version: "2.1"
+  galaxy_tags: ['apcupsd']
+  platforms: []
+dependencies: []
