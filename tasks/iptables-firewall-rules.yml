@@ -1,0 +1,15 @@
+---
+- name: "(iptables) allow APCUPSd services"
+  ansible.builtin.iptables:
+    action: "insert"
+    chain: "INPUT"
+    comment: "{{ item.comment }}"
+    destination_port: "{{ item.port }}"
+    protocol: "{{ item.protocol }}"
+    rule_num: 1
+    state: "present"
+  loop:
+    - {port: 3551, protocol: "tcp", comment: "APCUPSd Net Info Server"}
+    - {port: 3551, protocol: "udp", comment: "APCUPSd Net Info Server"}
+    - {port: 3052, protocol: "tcp", comment: "APCUPSd PCNet service"}
+    - {port: 3052, protocol: "udp", comment: "APCUPSd PCNet service"}

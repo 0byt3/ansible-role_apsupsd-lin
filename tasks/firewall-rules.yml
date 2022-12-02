@@ -1,0 +1,22 @@
+---
+- name: "Gather package information"
+  ansible.builtin.package_facts:
+
+- ansible.builtin.set_fact:
+    has_ufw: "{{ true if (ansible_facts.packages.ufw is defined) else false }}"
+    has_firewalld: "{{ true if (ansible_facts.packages.firewalld is defined) else false }}"
+    has_iptables: "{{ true if (ansible_facts.packages.iptables is defined) else false }}"
+    has_nftables: "{{ true if (ansible_facts.packages.nftables is defined) else false }}"
+
+- when: has_firewalld
+  ansible.builtin.include_tasks: "firewalld-firewall-rules.yml"
+
+- when: has_ufw
+  ansible.builtin.include_tasks: "ufw-firewall-rules.yml"
+
+- when: has_iptables and not has_firewalld and not has_ufw and not has_nftables
+  ansible.builtin.include_tasks: "iptables-firewall-rules.yml"
+
+## !! to be implemented some day
+# - when: has_nftables and not has_firewalld and not has_ufw and not has_iptables
+#   ansible.builtin.include_tasks: "nftables-firewall-rules.yml"

@@ -1,0 +1,7 @@
+---
+- name: "Add killpower '-p' option to service file"
+  ansible.builtin.shell:
+    cmd: "{{ lookup('ansible.builtin.file', 'add-killpwr-to-service.sh') }}"
+  register: enable_killpwr_script
+  changed_when: (['first'] + enable_killpwr_script.stdout_lines) | last is match('.*apcupsd\.service file changed')
+  notify: ["restart apcupsd"]

@@ -24,5 +24,8 @@
   loop: "{{ apc_options_to_set }}"
   notify: ["restart apcupsd"]
 
-- ansible.builtin.include_tasks: "lin-firewall-rules.yml"
+- ansible.builtin.include_tasks: "enable-kill-power.yml"
+  when: apc_enable_killpwr
+
+- ansible.builtin.include_tasks: "firewall-rules.yml"
   when: apc_add_firewall_rules

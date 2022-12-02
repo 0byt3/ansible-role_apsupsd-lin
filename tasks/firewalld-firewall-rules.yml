@@ -1,19 +1,24 @@
-- name: "(ufw firewall)  Copy UFW app files"
+- name: "(firewalld) Create firewalld service files"
   ansible.builtin.copy:
-    dest: "/etc/ufw/applications.d/{{ item | basename | replace('ufw_', '') }}"
+    dest: "/etc/firewalld/services/{{ item | basename | replace('firewalld_', '') }}"
     src: "{{ item }}"
     mode: 0644
   loop:
-    - "ufw_apcupsd-net-info-server"
-    - "ufw_apcupsd-pcnet"
-  notify: ["update ufw apps"]
+    - "firewalld_apcupsd-nis.xml"
+    - "firewalld_apcupsd-pcnet.xml"
+  notify: ["reload firewalld"]
 
+# reload firewalld if it is running so new service files can be used
 - ansible.builtin.meta: "flush_handlers"
 
-- name: "(ufw firewall) Allow APCUPSd services"
-  community.general.ufw:
-    name: "{{ item }}"
-    rule: "allow"
+- name: "(firewalld) Allow APCUPSd services"
+  ansible.posix.firewalld:
+    permanent: true
+    offline: true
+    service: "{{ item }}"
+    state: "enabled"
   loop:
     - "apcupsd-nis"
     - "apcupsd-pcnet"
+  notify: ["reload firewalld"]
+

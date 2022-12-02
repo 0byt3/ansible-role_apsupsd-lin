@@ -19,6 +19,7 @@ Role Variables
 |----------------------|------------------------------------------------------
 | apc_enable_fw_rules  | Create firewall rules for the apcupsd service. If this variable is not set, but apc_nisip or apc_nisport is set or apc_upscable is of type ether then firewall rules will be created.
 | apc_hv_cluster_node  | If this is set to true, scripts will be deployed to shutdown VMs and the cluster service.
+| apc_enable_killpwr   | Adds -p to the command to run the apcupsd service which will kill power to the outlets on the APC UPS.
 | apc_upsname          | Determines the value for the UPSNAME option.         
 | apc_upscable         | Determines the value for the UPSCABLE option.        
 | apc_upstype          | Determines the value for the UPSTYPE option.         
