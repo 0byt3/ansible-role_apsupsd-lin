@@ -1,4 +1,4 @@
-Role Name
+APCUPSD-LIN
 =========
 
 Configures and installs APCUPSd on Linux.
